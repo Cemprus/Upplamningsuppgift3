@@ -31,7 +31,7 @@ public class Brick extends Button {
         return bricks;
     }
 
-    private void placeBricks(GridPane grid, Brick[] bricks){
+    static void placeBricks(GridPane grid, Brick[] bricks){
         for (Brick brick : bricks) {
             grid.add(brick, brick.getCol(), brick.getRow());
         }

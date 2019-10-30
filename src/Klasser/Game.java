@@ -26,8 +26,31 @@ public class Game {
         return leftGrid;
     }
     public GridPane getCenterGameGrid(){
-        placeBricks();
+        Brick.placeBricks(centerGrid, bricks);
         centerGrid.setAlignment(Pos.CENTER);
         return centerGrid;
+    }
+
+    private void increaseStep(){
+        step.setText(String.valueOf(Integer.parseInt(step.getText())+1));
+    }
+
+    private void checkWin(){
+        int n = 0;
+        outerLoop:
+        for (int x = 0; x<4;x++){
+            for (int z = 0; z<4; z++){
+                Brick temp = Brick.getBrickFromGridPane(centerGrid, x, z);
+                if (temp != null && temp.getNummer() == n+1){
+                    n++;
+                }else {
+                    break outerLoop;
+                }
+            }
+        }
+        if (n == bricks.length){
+            centerGrid.getChildren().clear();
+            centerGrid.add(new Text("You WON!!! \nYour Score: " + (1000-Integer.parseInt(step.getText()))), 0, 0, 5, 5);
+        }
     }
 }
