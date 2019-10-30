@@ -21,4 +21,12 @@ public class Brick extends Button {
         setText(Integer.toString(nummer));
         setPrefSize(50, 50);
     }
+
+    static Klasser.Brick[] getBrickArray(int i){
+        Klasser.Brick[] bricks = new Klasser.Brick[i];
+        for (int n = 0; n<bricks.length;n++) {
+            bricks[n] = new Klasser.Brick(n+1);
+        }
+        return bricks;
+    }
 }
