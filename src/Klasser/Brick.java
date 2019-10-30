@@ -1,6 +1,7 @@
 package Klasser;
 
 import javafx.scene.control.Button;
+import javafx.scene.layout.GridPane;
 
 public class Brick extends Button {
     private int nummer;
@@ -28,5 +29,11 @@ public class Brick extends Button {
             bricks[n] = new Klasser.Brick(n+1);
         }
         return bricks;
+    }
+
+    private void placeBricks(GridPane grid, Brick[] bricks){
+        for (Brick brick : bricks) {
+            grid.add(brick, brick.getCol(), brick.getRow());
+        }
     }
 }
