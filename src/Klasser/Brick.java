@@ -4,6 +4,9 @@ import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
 
+import java.util.Arrays;
+import java.util.Collections;
+
 public class Brick extends Button {
     private int nummer;
     private int row;
@@ -50,5 +53,21 @@ public class Brick extends Button {
         ((Klasser.Brick) node).setPos(rowNum, colNum);
         grid.getChildren().remove(node);
         grid.add((Klasser.Brick) node,colNum, rowNum);
+    }
+
+    static void shuffleBricks(Klasser.Brick[] bricks) {
+        Collections.shuffle(Arrays.asList(bricks));
+
+        for (int n = 0;n<bricks.length;n++){
+            if(n < 4){
+                bricks[n].setPos(0, n);
+            }else if (n<8){
+                bricks[n].setPos(1, n-4);
+            }else if (n<12){
+                bricks[n].setPos(2, n-8);
+            }else if (n<16){
+                bricks[n].setPos(3, n-12);
+            }
+        }
     }
 }
