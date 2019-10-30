@@ -1,7 +1,5 @@
 package Klasser;
 
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
@@ -13,10 +11,6 @@ public class Game {
     private Button reset = new Button("New Game");
     private GridPane centerGrid = new GridPane();
     private GridPane leftGrid = new GridPane();
-
-    private Brick[] getBricks() { return bricks; }
-    public Text getStep(){ return step; }
-
 
     public GridPane getLeftGameGrid(){
         Text stepTitel = new Text("Steps taken: ");
