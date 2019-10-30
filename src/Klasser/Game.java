@@ -53,4 +53,31 @@ public class Game {
             centerGrid.add(new Text("You WON!!! \nYour Score: " + (1000-Integer.parseInt(step.getText()))), 0, 0, 5, 5);
         }
     }
+
+    private void setActions() {
+        for (Brick brick : bricks) {
+            brick.setOnAction(actionEvent -> {
+                if (actionEvent.getSource() instanceof Brick) {
+                    Brick temp = (Brick) actionEvent.getSource();
+                    int row = temp.getRow();
+                    int col = temp.getCol();
+
+                    if (centerGrid.getRowCount() > (col + 1) && Brick.getBrickFromGridPane(centerGrid, row, col + 1) == null) {
+                        increaseStep();
+                        Brick.moveBrickInGridPane(centerGrid, temp, row, col + 1);
+                    } else if (0 <= (col - 1) && Brick.getBrickFromGridPane(centerGrid, row, col - 1) == null) {
+                        increaseStep();
+                        Brick.moveBrickInGridPane(centerGrid, temp, row, col - 1);
+                    } else if (centerGrid.getColumnCount() > (row + 1) && Brick.getBrickFromGridPane(centerGrid, row + 1, col) == null) {
+                        increaseStep();
+                        Brick.moveBrickInGridPane(centerGrid, temp, row + 1, col);
+                    } else if (0 <= (row - 1) && Brick.getBrickFromGridPane(centerGrid, row - 1, col) == null) {
+                        increaseStep();
+                        Brick.moveBrickInGridPane(centerGrid, temp, row - 1, col);
+                    }
+                }
+                checkWin();
+            });
+        }
+    }
 }
