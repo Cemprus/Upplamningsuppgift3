@@ -1,5 +1,6 @@
 package Klasser;
 
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
 
@@ -35,5 +36,19 @@ public class Brick extends Button {
         for (Brick brick : bricks) {
             grid.add(brick, brick.getCol(), brick.getRow());
         }
+    }
+
+    static Klasser.Brick getBrickFromGridPane(GridPane grid, int row, int col) {
+        for (Node node : grid.getChildren()) {
+            if (GridPane.getColumnIndex(node) == col && GridPane.getRowIndex(node) == row && node instanceof Klasser.Brick) {
+                return (Klasser.Brick) node;
+            }
+        }
+        return null;
+    }
+    static void moveBrickInGridPane(GridPane grid, Object node, int rowNum, int colNum){
+        ((Klasser.Brick) node).setPos(rowNum, colNum);
+        grid.getChildren().remove(node);
+        grid.add((Klasser.Brick) node,colNum, rowNum);
     }
 }
