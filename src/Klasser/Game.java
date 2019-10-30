@@ -80,4 +80,10 @@ public class Game {
             });
         }
     }
+
+    public Game(){
+        Brick.shuffleBricks(bricks);
+        setActions();
+        checkWin();
+    }
 }
