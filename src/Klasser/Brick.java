@@ -7,7 +7,7 @@ import javafx.scene.layout.GridPane;
 import java.util.Arrays;
 import java.util.Collections;
 
-public class Brick extends Button {
+class Brick extends Button {
     private int nummer;
     private int row;
     private int col;
@@ -55,7 +55,7 @@ public class Brick extends Button {
         grid.add((Klasser.Brick) node,colNum, rowNum);
     }
 
-    static void shuffleBricks(Klasser.Brick[] bricks) {
+    static void shuffleBricksInArray(Klasser.Brick[] bricks) {
         Collections.shuffle(Arrays.asList(bricks));
 
         for (int n = 0;n<bricks.length;n++){

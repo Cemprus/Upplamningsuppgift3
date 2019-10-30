@@ -78,14 +78,14 @@ public class Game {
             reset.setOnAction(actionEvent -> {
                 step.setText("0");
                 centerGrid.getChildren().clear();
-                Brick.shuffleBricks(bricks);
+                Brick.shuffleBricksInArray(bricks);
                 Brick.placeBricks(centerGrid, bricks);
             });
         }
     }
 
     public Game(){
-        Brick.shuffleBricks(bricks);
+        Brick.shuffleBricksInArray(bricks);
         setActions();
         checkWin();
     }
