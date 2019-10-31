@@ -49,6 +49,7 @@ class Brick extends Button {
         }
         return null;
     }
+
     static void moveBrickInGridPane(GridPane grid, Object node, int rowNum, int colNum){
         ((Klasser.Brick) node).setPos(rowNum, colNum);
         grid.getChildren().remove(node);
